@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Confirmación Enviada! 🎉</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;700&family=Great+Vibes&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --color-pink-dust: #F0D5D8; /* Rosa Polvo */
+            --color-gold: #C8A870;      /* Dorado Suave */
+            --color-mauve: #8E7C85;     /* Malva Grisáceo */
+            --color-cream: #FFFFFB;     /* Blanco Crema */
+        }
+        
+        body {
+            font-family: 'Cormorant Garamond', serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--color-pink-dust); /* Fondo Rosa Suave */
+            color: #333;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .script-font {
+            font-family: 'Great Vibes', cursive;
+            font-weight: 400;
+        }
+
+        .thank-you-container {
+            background-color: var(--color-cream);
+            border: 2px solid var(--color-gold);
+            border-radius: 15px;
+            padding: 50px 30px;
+            max-width: 600px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            margin: 20px;
+        }
+
+        .thank-you-container h1 {
+            font-size: 3.5em;
+            color: var(--color-gold);
+            margin-bottom: 10px;
+        }
+
+        .thank-you-container p {
+            font-size: 1.2em;
+            color: var(--color-mauve);
+            line-height: 1.6;
+        }
+
+        .thank-you-container .name {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: var(--color-mauve);
+            margin-top: 20px;
+        }
+        
+        /* Botón de Retorno */
+        .gold-button {
+            text-decoration: none;
+            padding: 15px 30px;
+            background-color: var(--color-gold);
+            color: var(--color-cream);
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-transform: uppercase;
+            display: inline-block;
+            margin-top: 30px;
+        }
+
+        .gold-button:hover {
+            background-color: #B59560; 
+        }
+
+        @media (max-width: 480px) {
+            .thank-you-container h1 {
+                font-size: 2.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="thank-you-container">
+        <h1 class="script-font">¡Confirmación Recibida!</h1>
+        
+        <p>
+            Tu confirmación de asistencia ha sido registrada exitosamente.
+            ¡Estamos muy emocionados de compartir este gran día contigo!
+        </p>
+
+        <p class="name">
+            Mis XV Años Xuxa
+        </p>
+
+        <a href="index.html" class="gold-button">
+            Volver a la Invitación
+        </a>
+    </div>
+
+</body>
+</html>
