@@ -158,36 +158,72 @@
             padding: 20px;
         }
 
+        /* --- NUEVO: Panel Semitransparente --- */
+        .text-panel {
+        /* Color de fondo: Blanco Crema con 30% de opacidad */
+        background-color: rgba(255, 255, 251, 0.7); 
+    
+        /* Borde dorado */
+        border: 3px solid var(--color-gold);
+        border-radius: 10px;
+        padding: 20px 30px;
+        margin-bottom: 25px; /* Separa el panel del botón */
+    
+        /* Efecto de sombra sutil para darle profundidad */
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* --- AJUSTE DE COLORES Y FUERZA DEL TEXTO --- */
+
+        .hero-pre-title {
+        /* Color para el texto secundario */
+        color: var(--color-mauve); 
+        font-size: 1.2em;
+        font-weight: 600;
+        margin-bottom: 5px;
+        }
+
         .hero-title {
-            font-size: 6em;
-            margin: 0;
-            color: var(--color-gold);
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
-            line-height: 1.1;
+        font-size: 6em;
+        margin: 0;
+        /* Color Dorado Fuerte para el nombre */
+        color: var(--color-gold); 
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+        line-height: 1.1;
         }
 
         .hero-subtitle {
-            font-size: 2em;
-            font-weight: 300;
-            color: var(--color-cream);
-            margin-top: 5px;
-            margin-bottom: 20px;
-            letter-spacing: 5px;
-            text-transform: uppercase;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+        font-size: 2em;
+        font-weight: 700; /* Mayor grosor para destacar */
+        color: var(--color-mauve); /* Malva Grisáceo para contraste */
+        margin-top: 5px;
+        margin-bottom: 15px;
+        letter-spacing: 5px;
+        text-transform: uppercase;
+        text-shadow: none;
         }
 
         .hero-date {
-            font-size: 1.5em;
-            font-weight: bold;
-            margin-bottom: 30px;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        font-size: 1.5em;
+        font-weight: bold;
+        color: var(--color-mauve); /* Malva Grisáceo para contraste */
+        margin-bottom: 15px;
+        text-shadow: none;
         }
 
-        .cta-icon {
-            margin-right: 10px;
-            font-size: 1.3em;
+        /* --- Media Query para Responsividad --- */
+        @media (max-width: 768px) {
+        .hero-title { font-size: 4.5em; }
+        .text-panel {
+        padding: 15px 20px;
+        max-width: 90%;
         }
+    }
+        @media (max-width: 480px) {
+        .hero-title { font-size: 3.5em; }
+        .hero-subtitle { font-size: 1.2em; letter-spacing: 2px; }
+        }
+
 
 
         /* -------------------- 2. CONTADOR SECTION -------------------- */
@@ -524,17 +560,20 @@
     </div>
 </div>
 
-    <section id="portada" class="hero-section">
-        <div class="hero-content">
+<section id="portada" class="hero-section">
+    <div class="hero-content">
+        <div class="text-panel">
             <p class="hero-pre-title gold">Te invitamos a celebrar</p>
-            <h1 class="hero-title script-font">Xuxa Z latan</h1> 
+            <h1 class="hero-title script-font">Xuxa Zlatan</h1> 
             <h2 class="hero-subtitle">Mis Quince Años</h2>
             <p class="hero-date">19 de Diciembre de 2025</p>
-            <a href="#contador" class="gold-button">
-                <span class="cta-icon">👑</span> Ver Detalles del Evento
-            </a>
         </div>
-    </section>
+        
+        <a href="#contador" class="gold-button">
+            <span class="cta-icon">👑</span> Ver Detalles del Evento
+        </a>
+    </div>
+</section>
 
     <section id="contador" class="countdown-section">
         <h2 class="section-title">La cuenta regresiva ha comenzado...</h2>
