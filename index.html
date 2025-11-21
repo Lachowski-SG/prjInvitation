@@ -9,6 +9,80 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;700&family=Great+Vibes&display=swap" rel="stylesheet">
     
     <style>
+/* -------------------- 0. PRELOADER SECTION -------------------- */
+.preloader-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Fondo que combina el rosa polvo y el dorado suave */
+    background: linear-gradient(135deg, var(--color-pink-dust) 0%, var(--color-cream) 50%, var(--color-pink-dust) 100%);
+    z-index: 99999; /* Asegura que esté por encima de todo */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 1s ease-out, visibility 1s ease-out;
+}
+
+.preloader-overlay.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.preloader-content {
+    text-align: center;
+}
+
+.loader-icon {
+    font-size: 5em;
+    color: var(--color-gold);
+    animation: bounce-scale 1.5s infinite ease-in-out; /* Animación de rebote y escala */
+}
+
+.loader-text {
+    font-size: 1.5em;
+    font-weight: 700;
+    margin-top: 10px;
+    letter-spacing: 2px;
+}
+
+/* Animación del Icono */
+@keyframes bounce-scale {
+    0%, 100% { 
+        transform: translateY(0) scale(1);
+        text-shadow: 0 0 10px rgba(200, 168, 112, 0.5);
+    }
+    50% { 
+        transform: translateY(-15px) scale(1.1);
+        text-shadow: 0 5px 20px rgba(200, 168, 112, 0.8);
+    }
+}
+
+/* Barra de Carga (Opcional pero recomendado) */
+.loading-bar-container {
+    width: 200px;
+    height: 4px;
+    background-color: var(--color-mauve);
+    border-radius: 2px;
+    overflow: hidden;
+    margin-top: 20px;
+}
+
+.loading-bar {
+    height: 100%;
+    width: 0%; /* Empezará en 0% */
+    background-color: var(--color-gold);
+    animation: loading-fill 2.5s infinite linear; /* Animación de llenado */
+}
+
+@keyframes loading-fill {
+    0% { width: 0%; }
+    100% { width: 100%; }
+}
+
+
+    
         /* -------------------- ESTILOS GLOBALES -------------------- */
         :root {
             --color-pink-dust: #F0D5D8; /* Rosa Polvo */
@@ -440,6 +514,15 @@
     </style>
 </head>
 <body>
+<div id="preloader" class="preloader-overlay">
+    <div class="preloader-content">
+        <div class="loader-icon script-font">👑</div>
+        <p class="loader-text gold">Cargando la Fiesta de Xuxa...</p>
+        <div class="loading-bar-container">
+            <div class="loading-bar" id="loadingBar"></div>
+        </div>
+    </div>
+</div>
 
     <section id="portada" class="hero-section">
         <div class="hero-content">
@@ -571,6 +654,21 @@
     </section>
     
     <script>
+// === 0. LÓGICA DEL PRELOADER ===
+function hidePreloader() {
+    const preloader = document.getElementById('preloader');
+    if (preloader) {
+        // Añade la clase 'hidden' que usa la transición CSS para el desvanecimiento suave
+        preloader.classList.add('hidden');
+        
+        // Opcional: Eliminar el elemento del DOM después de la transición para liberar recursos
+        setTimeout(() => {
+            preloader.remove();
+        }, 1000); // Espera 1 segundo (igual que el CSS transition)
+    }
+}
+
+        
         // === 1. LÓGICA DEL CONTADOR ===
         const eventDate = new Date("December 19, 2025 17:00:00").getTime(); 
 
