@@ -248,9 +248,11 @@
         .countdown-timer {
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: flex-end;
+            max-width: 700px;
             gap: 15px;
-            flex-wrap: wrap;
+            margin: 20px auto  40px;
+            flex-wrap: nowrap;
         }
 
         .timer-box {
@@ -286,6 +288,35 @@
             display: none;
         }
 
+
+        /* --- RESPONSIVIDAD DEL CONTADOR --- */
+    @media (max-width: 550px) {
+    /* Permitir que los bloques se envuelvan si no caben */
+    .countdown-timer {
+        flex-wrap: wrap; 
+        gap: 10px; /* Reducir el espacio para que quepan */
+    }
+
+    /* Ajustar el tamaño de cada caja del contador */
+    .timer-box {
+        /* Reducir el tamaño para que dos quepan en una fila */
+        width: calc(50% - 15px); /* 50% menos la mitad del gap, para que quepan 2 */
+        padding: 15px 0;
+    }
+    
+    /* Reducir el tamaño de fuente de los números y labels */
+    .timer-value {
+        font-size: 3em; /* Reducir el número */
+    }
+    .timer-label {
+        font-size: 0.8em; /* Reducir el texto 'Días', 'Horas', etc. */
+    }
+    
+    /* Ocultar los separadores para que no estorben */
+    .timer-separator {
+        display: none;
+    }
+}
 
         /* -------------------- 3. CARRUSEL SECTION -------------------- */
         .carousel-section {
