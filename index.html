@@ -669,7 +669,7 @@
                 <button class="action-button gold-button" onclick="addToCalendar()">
                 <span class="cta-icon">🗓️</span> Agregar a mi Calendario
                 </button>
-                <a href="https://maps.app.goo.gl/Ro4GBJLejGp5sxYRA" target="_blank" class="action-button gold-button">
+                <a href="https://maps.app.goo.gl/3WpmUcMLY1omRtPi8" target="_blank" class="action-button gold-button">
                 <span class="cta-icon">📍</span> Ver Mapa
                 </a>
             </div>
@@ -679,48 +679,12 @@
                 <p class="detail-info name-place">Quinta El Paraíso</p>
                 <p class="detail-info address">KM # 2, Ctra. México - Laredo, Matlapa, S.L.P.</p>
                 <p class="detail-info time">6:00 p.m.</p>
-                <a href="https://maps.app.goo.gl/3WpmUcMLY1omRtPi8" target="_blank" class="action-button gold-button">
+                <a href="https://maps.app.goo.gl/Ro4GBJLejGp5sxYRA" target="_blank" class="action-button gold-button">
                     <span class="cta-icon">📍</span> Ver Mapa
                 </a>
             </div>
         </div>
     </section>
-
-    <section id="confirmar-asistencia" class="rsvp-section">
-    <h2 class="section-title script-font gold">Confirma tu Asistencia 💌</h2>
-    <p class="section-subtitle">Tu presencia es nuestro mejor regalo. Por favor, confírmanos tu asistencia.</p>
-
-    <form class="rsvp-form" name="rsvp" method="POST" id="rsvpForm" action="thank-you.html" netlify>
-        
-        <input type="hidden" name="form-name" value="rsvp" /> 
-
-        <div class="form-group">
-            <label for="fullName">Nombre Completo</label>
-            <input type="text" id="fullName" name="nombre_completo" placeholder="Ej. Ana Sofía de la Cruz" required>
-        </div>
-        
-        <div class="form-group">
-            <label>¿Podrás asistir?</label>
-            <div class="radio-group">
-                <input type="radio" id="attendYes" name="asistencia" value="Sí" required onchange="toggleAccompaniment(true)">
-                <label for="attendYes" class="radio-label">Sí, asistiré 🎉</label>
-                
-                <input type="radio" id="attendNo" name="asistencia" value="No" required onchange="toggleAccompaniment(false)">
-                <label for="attendNo" class="radio-label">No podré asistir 😔</label>
-            </div>
-        </div>
-        
-        <div class="form-group accompaniment-group" id="accompanimentField" style="display: none;">
-            <label for="companions">Acompañantes (Adultos)</label>
-            <p class="small-text">Máximo 5 personas adultas adicionales.</p>
-            <input type="number" id="companions" name="acompañantes" min="0" max="5" value="0">
-        </div>
-        
-        <button type="submit" class="gold-button" id="submitButton">Enviar Confirmación 💌</button>
-        <p class="response-message" id="responseMessage" aria-live="polite"></p>
-    </form>
-    </section>
-    
     <section id="carrusel-fotos" class="carousel-section">
         <h2 class="section-title script-font gold">Momentos Memorables</h2>
         <div class="photo-carousel-container">
@@ -760,8 +724,40 @@
             <div class="carousel-dots" id="carouselDots"></div>
         </div>
     </section>
+    <section id="confirmar-asistencia" class="rsvp-section">
+    <h2 class="section-title script-font gold">Confirma tu Asistencia 💌</h2>
+    <p class="section-subtitle">Tu presencia es nuestro mejor regalo. Por favor, confírmanos tu asistencia.</p>
 
-    
+    <form class="rsvp-form" name="rsvp" method="POST" id="rsvpForm" action="thank-you.html" netlify>
+        
+        <input type="hidden" name="form-name" value="rsvp" /> 
+
+        <div class="form-group">
+            <label for="fullName">Nombre Completo</label>
+            <input type="text" id="fullName" name="nombre_completo" placeholder="Ej. Ana Sofía de la Cruz" required>
+        </div>
+        
+        <div class="form-group">
+            <label>¿Podrás asistir?</label>
+            <div class="radio-group">
+                <input type="radio" id="attendYes" name="asistencia" value="Sí" required onchange="toggleAccompaniment(true)">
+                <label for="attendYes" class="radio-label">Sí, asistiré 🎉</label>
+                
+                <input type="radio" id="attendNo" name="asistencia" value="No" required onchange="toggleAccompaniment(false)">
+                <label for="attendNo" class="radio-label">No podré asistir 😔</label>
+            </div>
+        </div>
+        
+        <div class="form-group accompaniment-group" id="accompanimentField" style="display: none;">
+            <label for="companions">Acompañantes (Adultos)</label>
+            <p class="small-text">Máximo 5 personas adultas adicionales.</p>
+            <input type="number" id="companions" name="acompañantes" min="0" max="5" value="0">
+        </div>
+        
+        <button type="submit" class="gold-button" id="submitButton">Enviar Confirmación 💌</button>
+        <p class="response-message" id="responseMessage" aria-live="polite"></p>
+    </form>
+    </section>
     <script>
 // === 0. LÓGICA DEL PRELOADER ===
 function hidePreloader() {
