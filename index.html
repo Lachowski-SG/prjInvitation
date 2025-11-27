@@ -619,8 +619,8 @@
     </style>
 </head>
 <body>
-<audio id="backgroundMusic" controls loop muted autoplay> 
-    <source src="./Vals de Las Flores  tchaikovsky.mp3" type="audio/mpeg">
+<audio id="backgroundMusic" loop muted autoplay> 
+    <source src="./Athousand.mp3" type="audio/mpeg">
 </audio>
     <div id="preloader" class="preloader-overlay">
     <div class="preloader-content">
@@ -744,24 +744,37 @@
     </form>
     </section>
     <script>
-// === LÓGICA PARA INICIAR LA MÚSICA DESPUÉS DEL PRIMER CLIC ===
+// === LÓGICA REFORZADA PARA INICIAR LA MÚSICA DESPUÉS DEL PRIMER CLIC ===
+
 document.addEventListener('DOMContentLoaded', () => {
     const music = document.getElementById('backgroundMusic');
-    // Primero, intenta quitar el silencio y reproducir al cargar la página
+    
+    // Función que se encarga de quitar el silencio e intentar reproducir
+    const startAudio = () => {
+        music.muted = false; // Importante: quitar el silencio
+        
+        music.play()
+            .then(() => {
+                // Éxito: La música comenzó. Removemos los listeners.
+                document.removeEventListener('click', startAudio);
+                document.removeEventListener('touchend', startAudio);
+                console.log("Música iniciada por interacción del usuario.");
+            })
+            .catch(error => {
+                // Falla: (Normalmente sucede si ya se intentó reproducir antes o si hay otro bloqueo)
+                console.error("No se pudo iniciar la música automáticamente:", error);
+            });
+    };
+    // 1. Intentamos iniciar la reproducción silenciada al cargar (esto a veces funciona)
     music.play().catch(() => {
-        // Si falla (por restricción del navegador), agrega un listener de interacción
-        const playMusicOnInteraction = () => {
-            // Quita el "muted" y reproduce
-            music.muted = false;
-            music.play();
-            // Elimina el listener para que solo se ejecute una vez
-            document.removeEventListener('click', playMusicOnInteraction);
-            document.removeEventListener('touchend', playMusicOnInteraction);
-        };
-        // Escucha el primer clic o toque en cualquier parte del documento
-        document.addEventListener('click', playMusicOnInteraction);
-        document.addEventListener('touchend', playMusicOnInteraction);
+        // 2. Si el intento falla, esperamos el evento de interacción del usuario (click o touch)
+        // El navegador solo permite reproducir audio (quitar 'muted') si hay un evento de interacción.
+        document.addEventListener('click', startAudio);
+        document.addEventListener('touchend', startAudio); // Para dispositivos móviles
     });
+    // Asegúrate de que, en móviles, la música se intente reproducir cuando el preloader desaparece
+    // Si usaste el preloader, puedes añadir un intento de reproducción al final de hidePreloader().
+    // (Ejemplo: hidePreloader() { ... music.play().catch(() => { /* ignora error */ }); })
 });
 // === 0. LÓGICA DEL PRELOADER ===
 function hidePreloader() {
@@ -769,7 +782,11 @@ function hidePreloader() {
     if (preloader) {
         // Añade la clase 'hidden' que usa la transición CSS para el desvanecimiento suave
         preloader.classList.add('hidden');
-        
+        const music =document.getElementById('backgroundMusic');
+        if (music){
+            music.muted=false;
+            music.play().catch(() => {});
+        }    
         // Opcional: Eliminar el elemento del DOM después de la transición para liberar recursos
         setTimeout(() => {
             preloader.remove();
@@ -778,7 +795,6 @@ function hidePreloader() {
 }
 // Evento que espera a que todos los recursos (imágenes, CSS, etc.) se carguen.
 window.addEventListener('load', hidePreloader);
-
         
         // === 1. LÓGICA DEL CONTADOR ===
         const eventDate = new Date("December 19, 2025 17:00:00").getTime(); 
