@@ -620,9 +620,9 @@
 </head>
 <body>
 <audio id="backgroundMusic" loop muted autoplay>
-    <source src="./Athousand.mp3" type="audio/mp3">
+    <source src="./Athousand.mp3" type="audio/mpeg">
+    Tu navegador no soporta el elemento de audio.
 </audio>
-
     <div id="preloader" class="preloader-overlay">
     <div class="preloader-content">
         <div class="loader-icon script-font">👑</div>
@@ -748,21 +748,17 @@
 // === LÓGICA PARA INICIAR LA MÚSICA DESPUÉS DEL PRIMER CLIC ===
 document.addEventListener('DOMContentLoaded', () => {
     const music = document.getElementById('backgroundMusic');
-    
     // Primero, intenta quitar el silencio y reproducir al cargar la página
     music.play().catch(() => {
         // Si falla (por restricción del navegador), agrega un listener de interacción
-        
         const playMusicOnInteraction = () => {
             // Quita el "muted" y reproduce
             music.muted = false;
             music.play();
-            
             // Elimina el listener para que solo se ejecute una vez
             document.removeEventListener('click', playMusicOnInteraction);
             document.removeEventListener('touchend', playMusicOnInteraction);
         };
-
         // Escucha el primer clic o toque en cualquier parte del documento
         document.addEventListener('click', playMusicOnInteraction);
         document.addEventListener('touchend', playMusicOnInteraction);
