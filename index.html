@@ -744,6 +744,21 @@
     </form>
     </section>
     <script>
+// --- Bloquear clic derecho y teclas de atajo ---
+document.addEventListener('contextmenu', event => event.preventDefault()); // Bloquea clic derecho
+
+document.onkeydown = function(e) {
+    // Bloquea F12 (herramientas de desarrollador) y Ctrl+Shift+I/J/C
+    if (e.keyCode === 123 || 
+        (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74 || e.keyCode === 67))) {
+        return false;
+    }
+    // Bloquea Ctrl+U (Ver código fuente)
+    if (e.ctrlKey && e.keyCode === 85) {
+        return false;
+    }
+};
+
 // === LÓGICA REFORZADA PARA INICIAR LA MÚSICA DESPUÉS DEL PRIMER CLIC ===
 
 document.addEventListener('DOMContentLoaded', () => {
